@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: SpringBoot_rabbitMq
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: skok
+Implementation-Vendor-Id: com.cafe24.rabbitmq
+Build-Jdk: 1.8.0_171
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/SpringBoot_rabbitMq
+Created-By: Maven Integration for Eclipse
+
