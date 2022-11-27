@@ -25,8 +25,11 @@ public class ProduceController {
 	@GetMapping("/send")
 	public String send() {
 		System.out.println("Sending message...");
-		String send_message = "[{\"title\":\"제목1\",\"content\":\"내용a1\"}]";
-        rabbitTemplate.convertAndSend(topicExchange, "foo.bar.baz", send_message);
+		rabbitTemplate.convertAndSend("queue1", "hello world");
+		rabbitTemplate.convertAndSend("queue2", "hello world2");
+
+//		String send_message = "[{\"title\":\"제목1\",\"content\":\"내용a1\"}]";
+//        rabbitTemplate.convertAndSend(topicExchange, "foo.bar.baz", send_message);
 		return "send!!";
 	}
 	

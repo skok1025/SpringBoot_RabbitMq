@@ -1,5 +1,6 @@
 package com.cafe24.rabbitmq.config;
 
+import com.cafe24.rabbitmq.constant.RabbitMqConst;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
@@ -11,21 +12,29 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//@Configuration
+@Configuration
 public class RabbitConfiguration {
 
-    private static final String queueName = "spring-boot";
 
-    private static final String topicExchangeName = "spring-boot-exchange";
 
     @Bean
     Queue queue() {
-        return new Queue(queueName, false);
+        return new Queue(RabbitMqConst.SPRING_BOOT_QUEUE, false);
+    }
+
+    @Bean
+    Queue queue1() {
+        return new Queue(RabbitMqConst.QUEUE_1, false);
+    }
+
+    @Bean
+    Queue queue2() {
+        return new Queue(RabbitMqConst.QUEUE_2, false);
     }
 
     @Bean
     TopicExchange exchange() {
-        return new TopicExchange(topicExchangeName);
+        return new TopicExchange(RabbitMqConst.TOPIC_EXCHANGE);
     }
 
     @Bean
