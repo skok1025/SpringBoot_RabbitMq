@@ -1,5 +1,7 @@
 package com.cafe24.rabbitmq.controller;
 
+import com.cafe24.rabbitmq.constant.RabbitMqConst;
+import com.cafe24.rabbitmq.dto.TestDTO;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ProduceController {
 
 	private final RabbitTemplate rabbitTemplate;
-	private static final String topicExchange = "spring-boot-exchange";
 	
 	public ProduceController(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
@@ -25,11 +26,9 @@ public class ProduceController {
 	@GetMapping("/send")
 	public String send() {
 		System.out.println("Sending message...");
-		rabbitTemplate.convertAndSend("queue1", "hello world");
-		rabbitTemplate.convertAndSend("queue2", "hello world2");
+		rabbitTemplate.convertAndSend(RabbitMqConst.QUEUE_1, "hello world");
+		rabbitTemplate.convertAndSend(RabbitMqConst.QUEUE_2, new TestDTO("test", 11));
 
-//		String send_message = "[{\"title\":\"제목1\",\"content\":\"내용a1\"}]";
-//        rabbitTemplate.convertAndSend(topicExchange, "foo.bar.baz", send_message);
 		return "send!!";
 	}
 	
